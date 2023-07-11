@@ -3,12 +3,18 @@ import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { useEffect, useRef } from 'react';
 import Plants from './Plants';
 
-export default function Game({ setGameHeight }) {
+export default function Game({
+  setGameHeight,
+  plantSpaces,
+  setPlantSpaces,
+  money,
+  setMoney,
+  chosenPlant,
+}) {
   const gameRef = useRef(null);
 
   useEffect(() => {
     console.log('calculating');
-    console.log(gameRef.current);
     setGameHeight(gameRef.current.clientHeight);
   }, [setGameHeight]);
 
@@ -24,7 +30,13 @@ export default function Game({ setGameHeight }) {
         backgroundSize: 'cover',
       }}
     >
-      <Plants />
+      <Plants
+        plantSpaces={plantSpaces}
+        setPlantSpaces={setPlantSpaces}
+        money={money}
+        setMoney={setMoney}
+        chosenPlant={chosenPlant}
+      />
     </Grid>
   );
 }

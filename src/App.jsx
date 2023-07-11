@@ -8,6 +8,9 @@ import Game from './Game';
 import Footer from './Footer';
 export default function App() {
   const [gameHeight, setGameHeight] = useState(0);
+  const [plantSpaces, setPlantSpaces] = useState([]);
+  const [money, setMoney] = useState(500);
+  const [chosenPlant, setChosenPlant] = useState(null);
 
   return (
     <Grid
@@ -20,8 +23,20 @@ export default function App() {
         overflowY: 'hidden',
       }}
     >
-      <Header gameHeight={gameHeight} />
-      <Game setGameHeight={setGameHeight} />
+      <Header
+        gameHeight={gameHeight}
+        money={money}
+        chosenPlant={chosenPlant}
+        setChosenPlant={setChosenPlant}
+      />
+      <Game
+        setGameHeight={setGameHeight}
+        plantSpaces={plantSpaces}
+        setPlantSpaces={setPlantSpaces}
+        money={money}
+        setMoney={setMoney}
+        chosenPlant={chosenPlant}
+      />
       <Footer gameHeight={gameHeight} />
     </Grid>
   );
